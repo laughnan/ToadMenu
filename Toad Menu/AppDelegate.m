@@ -21,10 +21,16 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     _statusItem.image = [NSImage imageNamed:@"toad_menu_icon.png"];
+    [_statusItem setAction:@selector(itemClicked:)];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (void)itemClicked:(id)sender {
+    NSAlert * alert = [NSAlert alertWithMessageText:@"Bat signal acknowledged" defaultButton:@"Alright!" alternateButton:nil otherButton:nil informativeTextWithFormat:@"NSStatusItem was clicked"];
+    [alert runModal];
 }
 
 @end
